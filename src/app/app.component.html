@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-xs-12">
-    <h3>{{title}</h3>
+    <h3>{{title}}</h3>
   </div>
   <hr/>
   <form class="form-row">
@@ -23,11 +23,8 @@
     </div>
   </form>
   <hr/>
-  <div class="row">
-    <div class="col-xs-12">
-      <div *ngFor="let person of people; let i = index">
-        {{i + 1}}: {{person.name}} {{person.lastName}}
-      </div>
-    </div>
-  </div>
+  <app-person
+    *ngFor="let personElement of people; let i = index"
+    [person]="personElement" [index]="i"
+  ></app-person>
 </div>
