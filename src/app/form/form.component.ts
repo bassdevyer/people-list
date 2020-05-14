@@ -9,8 +9,6 @@ import {Person} from '../person.model';
 export class FormComponent implements OnInit {
 
   @Output() personCreated = new EventEmitter<Person>();
-  nameInput: string;
-  lastNameInput: string;
 
   constructor() {
   }
@@ -18,8 +16,8 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddPerson() {
-    let person1 = new Person(this.nameInput, this.lastNameInput);
+  onAddPerson(nameInput: HTMLInputElement, lastNameInput: HTMLInputElement) {
+    const person1 = new Person(nameInput.value, lastNameInput.value);
     this.personCreated.emit(person1);
   }
 
