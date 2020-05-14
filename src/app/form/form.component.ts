@@ -1,6 +1,7 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Person} from '../person.model';
 import {LoggingService} from '../LoggingService.service';
+import {PeopleService} from '../people.service';
 
 @Component({
   selector: 'app-form',
@@ -9,12 +10,11 @@ import {LoggingService} from '../LoggingService.service';
 })
 export class FormComponent implements OnInit {
 
-  @Output() personCreated = new EventEmitter<Person>();
-
   @ViewChild('nameInput') nameInput: ElementRef;
   @ViewChild('lastNameInput') lastNameInput: ElementRef;
 
-  constructor(private loggingService: LoggingService) {
+  constructor(private loggingService: LoggingService,
+              private peopleService: PeopleService) {
   }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
   onAddPerson() {
     const person1 = new Person(this.nameInput.nativeElement.value, this.lastNameInput.nativeElement.value);
     this.loggingService.sendMessageToConsole('Sending person: ' + person1.name + ' lastname: ' + person1.lastName);
-    this.personCreated.emit(person1);
+    this.peopleService.addPerson(person1);
   }
 
 }
