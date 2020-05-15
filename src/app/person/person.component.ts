@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Person} from '../person.model';
+import {PeopleService} from '../people.service';
 
 @Component({
   selector: 'app-person',
@@ -11,9 +12,13 @@ export class PersonComponent implements OnInit {
   @Input() person: Person;
   @Input() index: number;
 
-  constructor() { }
+  constructor(private peopleService: PeopleService) {
+  }
 
   ngOnInit(): void {
   }
 
+  emitGreeting() {
+    this.peopleService.greet.emit(this.index);
+  }
 }
