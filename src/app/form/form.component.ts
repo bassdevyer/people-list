@@ -22,7 +22,6 @@ export class FormComponent implements OnInit {
 
   onAddPerson() {
     const person1 = new Person(this.nameInput.nativeElement.value, this.lastNameInput.nativeElement.value);
-    this.loggingService.sendMessageToConsole('Sending person: ' + person1.name + ' lastname: ' + person1.lastName);
     this.peopleService.addPerson(person1);
   }
 
