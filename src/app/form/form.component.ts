@@ -10,8 +10,8 @@ import {PeopleService} from '../people.service';
 })
 export class FormComponent implements OnInit {
 
-  @ViewChild('nameInput') nameInput: ElementRef;
-  @ViewChild('lastNameInput') lastNameInput: ElementRef;
+  nameInput: string;
+  lastNameInput: string;
 
   constructor(private loggingService: LoggingService,
               private peopleService: PeopleService) {
@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
   }
 
   onAddPerson() {
-    const person1 = new Person(this.nameInput.nativeElement.value, this.lastNameInput.nativeElement.value);
+    const person1 = new Person(this.nameInput, this.lastNameInput);
     this.peopleService.addPerson(person1);
   }
 
