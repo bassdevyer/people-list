@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Person} from '../../person.model';
 import {LoggingService} from '../../LoggingService.service';
 import {PeopleService} from '../../people.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -13,8 +14,9 @@ export class FormComponent implements OnInit {
   nameInput: string;
   lastNameInput: string;
 
-  constructor(private loggingService: LoggingService,
-              private peopleService: PeopleService) {
+  constructor(
+    private peopleService: PeopleService,
+    private router: Router) {
     this.peopleService.greet.subscribe(
       (index: number) => alert('The index is ' + index)
     );
@@ -23,9 +25,9 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddPerson() {
+  onGuardarPersona() {
     const person1 = new Person(this.nameInput, this.lastNameInput);
     this.peopleService.addPerson(person1);
+    this.router.navigate(['personas']);
   }
-
 }
