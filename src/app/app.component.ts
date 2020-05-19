@@ -8,17 +8,7 @@ import {PeopleService} from './people.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'People List';
-  people: Person[] = [];
-
-
-  constructor(private loggingService: LoggingService,
-              private peopleService: PeopleService) {
-  }
-
-  ngOnInit(): void {
-    this.people = this.peopleService.people;
-  }
 
 }

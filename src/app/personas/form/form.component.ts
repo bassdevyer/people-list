@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Person} from '../person.model';
-import {LoggingService} from '../LoggingService.service';
-import {PeopleService} from '../people.service';
+import {Component, OnInit} from '@angular/core';
+import {Person} from '../../person.model';
+import {LoggingService} from '../../LoggingService.service';
+import {PeopleService} from '../../people.service';
 
 @Component({
   selector: 'app-form',
