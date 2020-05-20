@@ -20,9 +20,13 @@ export class PeopleService {
     return this.people[indice];
   }
 
-  modificarPersona(index: number, persona: Person){
+  modificarPersona(index: number, persona: Person) {
     let persona1 = this.people[index];
     persona1.name = persona.name;
     persona1.lastName = persona.lastName;
+  }
+
+  eliminarPersona(index: number) {
+    this.people.splice(index, 1);
   }
 }
