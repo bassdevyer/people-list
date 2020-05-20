@@ -9,13 +9,15 @@ import {FormComponent} from './personas/form/form.component';
 import {LoggingService} from './LoggingService.service';
 import {PeopleService} from './people.service';
 import { PersonasComponent } from './personas/personas.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonComponent,
     FormComponent,
-    PersonasComponent
+    PersonasComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
