@@ -1,7 +1,9 @@
 <div class="item">
-  <input type="checkbox"
-         (click)="emitGreeting()"/>
-  <p>
-    {{index + 1}}: {{person.name}} {{person.lastName}}
-  </p>
+  <ul>
+    <li>
+      <a [routerLink]="['/personas', index]">
+        {{person.name}} {{person.lastName}}
+      </a>
+    </li>
+  </ul>
 </div>

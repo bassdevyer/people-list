@@ -15,4 +15,14 @@ export class PeopleService {
     this.loggingService.sendMessageToConsole('adding person: ' + person.name);
     this.people.push(person);
   }
+
+  encontarPersona(indice: number) {
+    return this.people[indice];
+  }
+
+  modificarPersona(index: number, persona: Person){
+    let persona1 = this.people[index];
+    persona1.name = persona.name;
+    persona1.lastName = persona.lastName;
+  }
 }
