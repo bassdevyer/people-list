@@ -14,6 +14,7 @@ export class FormComponent implements OnInit {
   nameInput: string;
   lastNameInput: string;
   index: number;
+  modoEdicion: number;
 
   constructor(
     private peopleService: PeopleService,
@@ -26,7 +27,8 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.index = this.route.snapshot.params['id'];
-    if (this.index) {
+    this.modoEdicion = +this.route.snapshot.queryParams['modoEdicion'];
+    if (this.modoEdicion != null && this.modoEdicion === 1) {
       const persona: Person = this.peopleService.encontarPersona(this.index);
       this.nameInput = persona.name;
       this.lastNameInput = persona.lastName;
@@ -35,7 +37,7 @@ export class FormComponent implements OnInit {
 
   onGuardarPersona() {
     const person1 = new Person(this.nameInput, this.lastNameInput);
-    if (this.index) {
+    if (this.modoEdicion != null && this.modoEdicion === 1) {
       this.peopleService.modificarPersona(this.index, person1);
     } else {
       this.peopleService.addPerson(person1);
