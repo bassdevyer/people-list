@@ -15,7 +15,8 @@ export class DataServices {
   }
 
   guardarPersonas(personas: Person[]) {
-    this.httpClient.put('https://listado-personas-c3d21.firebaseio.com/datos.json', personas)
+    const token = this.loginService.getIdToken();
+    this.httpClient.put('https://listado-personas-c3d21.firebaseio.com/datos.json?auth=' + token, personas)
       .subscribe(
         response => console.log('resultado guardar Personas ' + response),
         error => console.log('Error al guardar personas ' + error)
@@ -23,8 +24,9 @@ export class DataServices {
   }
 
   modificarPersona(index: number, persona: Person) {
+    const token = this.loginService.getIdToken();
     let url: string;
-    url = 'https://listado-personas-c3d21.firebaseio.com/datos/' + index + '.json';
+    url = 'https://listado-personas-c3d21.firebaseio.com/datos/' + index + '.json?auth=' + token;
     this.httpClient.put(url, persona)
       .subscribe(
         response => console.log('resultado modificar Persona: ' + response),
@@ -33,8 +35,9 @@ export class DataServices {
   }
 
   eliminarPersona(index: number) {
+    const token = this.loginService.getIdToken();
     let url: string;
-    url = 'https://listado-personas-c3d21.firebaseio.com/datos/' + index + '.json';
+    url = 'https://listado-personas-c3d21.firebaseio.com/datos/' + index + '.json?auth=' + token;
     this.httpClient.delete(url)
       .subscribe(
         response => console.log('resultado eliminar Persona: ' + response),
