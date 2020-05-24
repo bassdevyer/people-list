@@ -19,4 +19,14 @@ export class DataServices {
       );
   }
 
+  modificarPersona(index: number, persona: Person) {
+    let url: string;
+    url = 'https://listado-personas-c3d21.firebaseio.com/datos/' + index + '.json';
+    this.httpClient.put(url, persona)
+      .subscribe(
+        response => console.log('resultado modificar Persona: ' + response),
+        error => console.log('Error en modificar Persona: ' + error)
+      );
+  }
+
 }
