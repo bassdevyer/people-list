@@ -29,4 +29,14 @@ export class DataServices {
       );
   }
 
+  eliminarPersona(index: number) {
+    let url: string;
+    url = 'https://listado-personas-c3d21.firebaseio.com/datos/' + index + '.json';
+    this.httpClient.delete(url)
+      .subscribe(
+        response => console.log('resultado eliminar Persona: ' + response),
+        error => console.log('Error en eliminar Persona: ' + error)
+      );
+  }
+
 }
